@@ -61,13 +61,13 @@ jobs:
                 run-id: ${{ github.event.workflow_run.id }}
                 github-token: ${{ github.token }}
 
-            - name: "echo token "
-              run: echo "${{ secrets.VERCEL_TOKEN }}"
-              env:
-                    VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+            # - name: "echo token "
+            #   run: echo "${{ secrets.VERCEL_TOKEN }}"
+            #   env:
+            #         VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
 
 
             - name: "Deploy to Vercel"
-              run: vercel --prod --VERCEL_TOKEN=${{secrets.VERCEL_TOKEN}} --confirm --name=cicdproject
+              run: vercel --prod --token=$VERCEL_TOKEN --confirm --name=cicdproject
               env:
-                    VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+                VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
